@@ -86,11 +86,89 @@ def feNrNodes1DRectilinear(n_elems: int,  degree: int, type: str) -> int:
 
     """
 
-    if type == 'CG':
+    if type == 'lagrange':
         nr_nodes = 1 + n_elems * degree
-    elif type == 'DG':
+    elif type == 'discont':
         nr_nodes = n_elems * (degree + 1)
     else:
         print('The requested discretization type is not yet supported. Alternatively, check for typos, please.')
         nr_nodes = -1
     return nr_nodes
+
+
+# TODO: This function is for FE only. WIll need similar function for IGA,
+# or even one function working for both.
+# TODO: Change according to notes in black notebook
+def feSlicer1DRectilinear(index : int,  degree: int, n_elems: int, n_refine: int, type: str) -> (int, int):
+    """
+    Returns slicing indices for creation of perturbation basis.
+
+    Args
+    ----
+    index:    Type: int.    Global node index
+    degree:   Type: int.    Polynomial degree
+    n_elems:  Type: int.    Total number of primal elements
+    n_refine: Type: int.    Number of refinement steps
+    type:     Type: str.    CG or DG?
+
+    Meta:
+    ----
+    Author:           Sasa Lukic
+    Date of creation: 07 Sep 2018
+    Python version:   3.6.6
+    Last update:      08 Sep 2018
+
+    """
+
+    elem_nr      = index // degree     # Global element number (as long as not parallelized)
+    elem_node_nr = index % degree      # Element local node number
+
+    if type == 'discont':
+        # Check if corner node
+        if elem_node_nr == 0 :
+            # Check if leftmost or rightmost node
+            if elem_nr == 0:
+                # elems = 1       # Leftmost node
+                leftSlice  = None
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+            elif elem_nr == n_elems:
+                # elems = 1       # Rightmost node
+                elem_nr = elem_nr - 1
+                leftSlice = (degree + 1) * (elem_nr) * 2**(n_refine)
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+            else:
+                # Nodes of interest are elem_nr and elem_nr - 1
+                # elems = 2     # 0-th node of current element, but degree_th node of topo (includes previous element)
+                leftSlice = (degree + 1) * (elem_nr - 1) * 2**(n_refine)
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+        else:
+            # elems = 1        # Middle node
+            leftSlice = (degree + 1) * (elem_nr) * 2**(n_refine)
+            rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+    elif type == 'lagrange':
+        # Check if corner node
+        if elem_node_nr == 0 :
+            # Check if leftmost or rightmost node
+            if elem_nr == 0:
+                # elems = 1       # Leftmost node
+                leftSlice  = None
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+            elif elem_nr == n_elems:
+                # elems = 1       # Rightmost node
+                elem_nr = elem_nr - 1
+                leftSlice = (degree + 1) * (elem_nr) * 2**(n_refine)
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+            else:
+                # Nodes of interest are elem_nr and elem_nr - 1
+                # elems = 2     # 0-th node of current element, but degree_th node of topo (includes previous element)
+                leftSlice = (degree + 1) * (elem_nr - 1) * 2**(n_refine)
+                rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+        else:
+            # elems = 1        # Middle node
+            leftSlice = (degree + 1) * (elem_nr) * 2**(n_refine)
+            rightSlice = (degree + 1) * (elem_nr + 1) * 2**(n_refine)
+    else:
+        print("You chose an incompatible discretization type. Either use CG or DG.")
+        leftSlice = -1
+        rightSlice = 0
+    return leftSlice, rightSlice
