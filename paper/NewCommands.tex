@@ -1,0 +1,82 @@
+%% new commands
+
+% vector and form definition
+\newcommand{\vect}[2]{\ensuremath{\boldsymbol{\mathrm{#1}}_{#2}}}
+\newcommand{\covect}[2]{\ensuremath{\boldsymbol{\mathrm{#1}}^{#2}}}
+\newcommand{\Tvect}[2]{\ensuremath{#1_{#2}}}
+\newcommand{\Dform}[2]{\ensuremath{#1^{#2}}}
+\newcommand{\norm}[2]{\ensuremath{\left| #1 \right|_{#2}}}
+\newcommand{\Norm}[2]{\ensuremath{\left| \left| #1 \right| \right|_{#2}}}
+
+% cochain and chain definition
+\newcommand{\chain}[2]{\ensuremath{#1_{(#2)}}}
+\newcommand{\cochain}[2]{\ensuremath{#1^{(#2)}}}
+\newcommand{\supp}[1]{\ensuremath{\text{supp}\left\{#1\right\}}}
+
+
+\newcommand{\boundary}{\ensuremath{\partial}}
+\newcommand{\coboundary}{\ensuremath{\delta}}
+
+% coordinates
+\newcommand{\coord}[2]{\ensuremath{#1^{#2}}}
+\newcommand{\x}[1]{\ensuremath{x^{#1}}}
+\newcommand{\y}[1]{\ensuremath{y^{#1}}}
+\newcommand{\dx}[1]{\ensuremath{\mathrm{d}x^{#1}}}
+\newcommand{\dy}[1]{\ensuremath{\mathrm{d}y^{#1}}}	
+\newcommand{\dA}[2]{\ensuremath{\mathrm{\dx{#1} \wedge \dx{#2}}}}	
+\newcommand{\dV}[3]{\ensuremath{\mathrm{\dx{#1} \wedge \dx{#2} \wedge \dx{#3}}}}	
+\newcommand{\J}[1]{\ensuremath{\mathrm{J_{#1}}}}
+\newcommand{\vol}{\ensuremath{\Omega}}
+\newcommand{\dvol}{\ensuremath{\mathrm{d}\Omega}}
+\newcommand{\Map}{\ensuremath{\Phi}}
+
+% differential operators
+\newcommand{\diff}{\ensuremath{\mathrm{d}}}
+\newcommand{\grad}{\ensuremath{\mathrm{grad}}}
+\renewcommand{\div}{\ensuremath{\mathrm{div}}}
+\newcommand{\curl}{\ensuremath{\mathrm{curl}}}
+\newcommand{\rot}{\ensuremath{\mathrm{rot}}}
+
+% Discrete operators
+\newcommand{\Int}[1]{\ensuremath{\mathcal{I}_{#1}}}
+\newcommand{\Red}[1]{\ensuremath{\mathcal{R}_{#1}}}
+\newcommand{\Hodge}[1]{\ensuremath{\mathrm{H}_{(#1)}}}
+\newcommand{\Mat}[2]{\ensuremath{\mathrm{#1}_{(#2)}}}
+\newcommand{\Laplace}[1]{\ensuremath{\Delta_{(#1)}}}
+\newcommand{\ED}[1]{\ensuremath{\mathrm{D}_{#1}}}
+\newcommand{\CED}[1]{\ensuremath{\mathrm{D}^{\ast}_{#1}}}
+
+% Spline definition
+\newcommand{\KnotVector}[3]{\ensuremath{\vect{#1}{#2} = \left\{ \right. #3 \left.\right\}}}
+\newcommand{\SplineSpace}[2]{\ensuremath{\mathcal{S}^{#1}_{\vect{#2}{}}}}
+
+% Notation basis function
+\newcommand{\basis}[2]{\ensuremath{B^{#1}_{#2} \left(\vect{x}{}\right)}}
+\newcommand{\Basis}[1]{\ensuremath{\vect{B}{}^{#1}\left(\vect{x}{}\right)}}
+\newcommand{\Dof}[2]{\ensuremath{\vect{\bar{#1}}{#2}}}
+
+\newcommand{\Span}[1]{\ensuremath{\mathrm{span} \left\{#1\right\}}}
+
+% new definitions
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{acknowledgement}{Acknowledgement}[subsection]
+\newtheorem{algorithm}{Algorithm}[subsection]
+\newtheorem{axiom}{Axiom}[subsection]
+\newtheorem{case}{Case}[subsection]
+\newtheorem{claim}{Claim}[subsection]
+\newtheorem{conclusion}{Conclusion}[subsection]
+\newtheorem{condition}{Condition}[subsection]
+\newtheorem{conjecture}{Conjecture}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+\newtheorem{criterion}{Criterion}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{notation}{Notation}[subsection]
+\newtheorem{problem}{Problem}[subsection]
+\newtheorem{proposition}{Proposition}[subsection]
+\newtheorem{remark}{Remark}[subsection]
+\newtheorem{solution}{Solution}[subsection]
+\newtheorem{summary}{Summary}[subsection]
+\newenvironment{proof}[1]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}

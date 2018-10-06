@@ -1,0 +1,187 @@
+\usepackage[left=1.00in,top=1.00in,right=1.00in,bottom=1.00in]{geometry}
+\usepackage{calc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[linesnumbered,boxed]{algorithm2e}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{eufrak}
+\usepackage{amsmath}
+\usepackage{hyperref} 
+\usepackage{lscape}
+\usepackage{morefloats}
+\usepackage{stmaryrd}
+
+
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{diagrams}
+\usepackage{color}
+\usepackage{subfigure}
+%\diagramstyle[labelstyle=\scriptstyle]
+\newarrow{Dto}{<}{-}{-}{-}{>}
+\usepackage[all]{xy}
+\diagramstyle[labelstyle=\scriptstyle]
+%\usepackage{a4wide} 														  	% Iets meer tekst op een bladzijde
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The numcompress package shorten the last page in references.
+%% `nodots' option removes dots from firstnames in references.
+\usepackage[nodots]{numcompress}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{balance}{Balance Law}[section]
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+\newcommand{\basisvector}[2]{\ensuremath{\text{\mbox{\small $\frac{\boldsymbol{\partial}}{\boldsymbol{\partial} #1^{#2}}$}}}}
+
+% vector and form definition
+\newcommand{\param}{\ensuremath{\xi}}
+\newcommand{\vect}[2]{\ensuremath{\boldsymbol{\mathrm{#1}}_{#2}}}
+\newcommand{\Tvect}[2]{\ensuremath{#1_{#2}}}
+\newcommand{\Dform}[2]{\ensuremath{#1^{#2}}}
+
+% cochain and chain definition
+\newcommand{\chain}[2]{\ensuremath{\vect{#1}{#2}}}
+\newcommand{\cochain}[2]{\ensuremath{#1^{#2}}}
+\newcommand{\supp}[1]{\ensuremath{\text{supp}\left\{#1\right\}}}
+
+\newcommand{\boundary}{\ensuremath{\partial}}
+\newcommand{\coboundary}{\ensuremath{\delta}}
+
+% coordinates
+\newcommand{\coord}[2]{\ensuremath{#1_{#2}}}
+\newcommand{\x}[1]{\ensuremath{x^{#1}}}
+\newcommand{\y}[1]{\ensuremath{y^{#1}}}
+\newcommand{\dx}[1]{\ensuremath{\mathrm{d}x^{#1}}}
+\newcommand{\dy}[1]{\ensuremath{\mathrm{d}y^{#1}}}	
+\newcommand{\dA}[2]{\ensuremath{\mathrm{\dx{#1} \wedge \dx{#2}}}}	
+\newcommand{\dV}[3]{\ensuremath{\mathrm{\dx{#1} \wedge \dx{#2} \wedge \dx{#3}}}}	
+\newcommand{\J}[1]{\ensuremath{\mathrm{J_{#1}}}}
+\newcommand{\vol}{\ensuremath{\Omega}}
+\newcommand{\dvol}{\ensuremath{\mathrm{d}\Omega}}
+\newcommand{\Map}{\ensuremath{\Phi}}
+
+% differential operators
+\newcommand{\diff}{\ensuremath{\mathrm{d}}}
+\newcommand{\grad}{\ensuremath{\mathrm{grad}}}
+\renewcommand{\div}{\ensuremath{\mathrm{div}}}
+\newcommand{\curl}{\ensuremath{\mathrm{curl}}}
+
+% Discrete operators
+\newcommand{\Int}[1]{\ensuremath{\mathcal{I}_{#1}}}
+\newcommand{\Red}[1]{\ensuremath{\mathcal{R}_{#1}}}
+\newcommand{\Hodge}[1]{\ensuremath{\mathrm{H}^{(#1)}}}
+\newcommand{\Laplace}[1]{\ensuremath{\Delta_d^{(#1)}}}
+\newcommand{\ED}[1]{\ensuremath{\mathrm{D}^{(#1)}}}
+\newcommand{\CED}[1]{\ensuremath{\mathrm{D}^{\ast(#1)}}}
+
+% Spline definition
+\newcommand{\KnotVector}[3]{\ensuremath{\vect{#1}{#2} = \left\{ \right. #3 \left.\right\}}}
+\newcommand{\SplineSpace}[2]{\ensuremath{\mathcal{S}^{#1}_{\vect{#2}{}}}}
+
+% Notation basis function
+\newcommand{\basis}[2]{\ensuremath{B^{#1}_{#2} \left(\vect{x}{}\right)}}
+\newcommand{\Basis}[1]{\ensuremath{\vect{B}{}^{#1}\left(\vect{x}{}\right)}}
+\newcommand{\Dof}[2]{\ensuremath{\vect{\bar{#1}}{#2}}}
+
+%%%%%%%%%
+%%%%%%%%%
+%%%%%%%%%
+
+%\newcommand{\vect}[3]{\ensuremath{\boldsymbol{\mathrm{#1}}_{#2}^{#3}}}
+%
+%\newcommand{\curl}{\,\hspace{-1pt}{\bf curl}\hspace{-1pt}\,}
+%\def\div{\,\hspace{-1pt}{\rm div}\hspace{-1pt}\,}
+%\newcommand{\grad}{\,\hspace{-1pt}{\bf grad}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\divhat}{\,\hspace{-1pt}{\widehat{\textup{div}}}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\Lbold}{\,\hspace{-1pt}{\textup{\textbf{L}}^2}(\Omega)\hspace{-1pt}\,}
+%
+%\newcommand{\Hbold}{\,\hspace{-1pt}{\textup{\textbf{H}}^1}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\HboldKh}{\,\hspace{-1pt}{\textup{\textbf{H}}^1}(\mathcal{K}_h)\hspace{-1pt}\,}
+%\newcommand{\Hboldtwo}{\,\hspace{-1pt}{\textup{\textbf{H}}^2}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Hboldz}{\,\hspace{-1pt}{\textup{\textbf{H}}^1_0}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Hboldn}{\,\hspace{-1pt}{\textup{\textbf{H}}^1_{\textup{\textbf{n}}}}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Hboldkpone}{\,\hspace{-1pt}{\textup{\textbf{H}}^{j+1}}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Hbolds}{\,\hspace{-1pt}{\textup{\textbf{H}}^s}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Hboldspone}{\,\hspace{-1pt}{\textup{\textbf{H}}^{s+1}}(\Omega)\hspace{-1pt}\,}
+%
+%\newcommand{\Hdiv}{\,\hspace{-1pt}{\bf H}({\rm div};\Omega)\hspace{-1pt}\,}
+%
+%\newcommand{\Hdivz}{\,\hspace{-1pt}{\textup{\textbf{H}}_0}({\rm div};\Omega)\hspace{-1pt}\,}
+%
+%\newcommand{\LboldK}{\,\hspace{-1pt}{\textup{\textbf{L}}^2}(K)\hspace{-1pt}\,}
+%\newcommand{\HboldK}{\,\hspace{-1pt}{\textup{\textbf{H}}^1}(K)\hspace{-1pt}\,}
+%
+%\newcommand{\lcurly}{\{\!\!\{}
+%\newcommand{\rcurly}{\}\!\!\}}
+%
+%%%%%%%%%%
+%
+%\newcommand{\LboldD}{\,\hspace{-1pt}{\textup{\textbf{L}}^2}(D)\hspace{-1pt}\,}
+%
+%\newcommand{\HboldzD}{\,\hspace{-1pt}{\textup{\textbf{H}}^1_0}(D)\hspace{-1pt}\,}
+%\newcommand{\HboldkD}{\,\hspace{-1pt}{\textup{\textbf{H}}^k}(D)\hspace{-1pt}\,}
+%\newcommand{\HboldsD}{\,\hspace{-1pt}{\textup{\textbf{H}}^s}(D)\hspace{-1pt}\,}
+%
+%\newcommand{\HdivD}{\,\hspace{-1pt}{\bf H}({\rm div};D)\hspace{-1pt}\,}
+%\newcommand{\HdivsD}{\,\hspace{-1pt}{\textup{\textbf{H}}^s}({\rm div};D)\hspace{-1pt}\,}
+%\newcommand{\HdivzD}{\,\hspace{-1pt}{\textup{\textbf{H}}_0}({\rm div};D)\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\Hboldh}{\,\hspace{-1pt}{\textup{\textbf{H}}^1}(\widehat{\Omega})\hspace{-1pt}\,}
+%\newcommand{\Hdivzh}{\,\hspace{-1pt}{\textup{\textbf{H}}_0}(\widehat{{\rm div}};\widehat{\Omega})\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\Ska}{\,\hspace{-1pt}S^k_{\boldsymbol{\alpha}}\hspace{-1pt}\,}
+%\newcommand{\Skal}{\,\hspace{-1pt}S^{k-1}_{\boldsymbol{\alpha-1}}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\Ciam}{\,\hspace{-1pt}C^{\infty}_{\boldsymbol{\alpha}_1,\ldots,\boldsymbol{\alpha}_d}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\PiVz}{\,\hspace{-1pt}\Pi^0_{\mathcal{V}_{h}}\hspace{-1pt}\,}
+%\newcommand{\PiQz}{\,\hspace{-1pt}\Pi^0_{\mathcal{Q}_{h}}\hspace{-1pt}\,}
+%
+%\newcommand{\PihatVz}{\,\hspace{-1pt}\widehat{\Pi}^0_{\widehat{\mathcal{V}}_{h}}\hspace{-1pt}\,}
+%\newcommand{\PihatQz}{\,\hspace{-1pt}\widehat{\Pi}^0_{\widehat{\mathcal{Q}}_{h}}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\boldF}{\,\hspace{-1pt}\textup{\textbf{F}}\hspace{-1pt}\,}
+%
+%%%%%%%%%%
+%
+%\newcommand{\Honebold}{\,\hspace{-1pt}\textup{\textbf{H}}^1(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Honeboldh}{\,\hspace{-1pt}\textup{\textbf{H}}^1(\widehat{\Omega})\hspace{-1pt}\,}
+%\newcommand{\Honen}{\,\hspace{-1pt}\textup{\textbf{H}}^1_{\textup{\textbf{n}}}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\Honenh}{\,\hspace{-1pt}\textup{\textbf{H}}^1_{\widehat{\textup{\textbf{n}}}}(\widehat{\Omega})\hspace{-1pt}\,}
+%\newcommand{\Honez}{\,\hspace{-1pt}\textup{\textbf{H}}^1_{0}(\Omega)\hspace{-1pt}\,}
+%
+%\newcommand{\boldPhi}{\,\hspace{-1pt}\boldsymbol{\Phi}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\boldPhiper}{\,\hspace{-1pt}\boldsymbol{\Phi}_{per}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\boldPhin}{\,\hspace{-1pt}\boldsymbol{\Phi}_{\textup{\textbf{n}}}(\Omega)\hspace{-1pt}\,}
+%\newcommand{\boldPhiz}{\,\hspace{-1pt}\boldsymbol{\Phi}_0(\Omega)\hspace{-1pt}\,}
