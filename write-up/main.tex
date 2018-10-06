@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+\usepackage{pifont}
+\usepackage{multicol}
+
+\usepackage{color}
+\definecolor{lightgray}{gray}{0.80}
+
+\def\Rd{\color{red}} 
+\def\B{\color{black}}
+\def\Gr{\color{green}} 
+\def\Bl{\color{blue}}
+
+
+\begin{document}
+
+\title{Continuous Petrov Galerkin with compactly supported optimal test-functions}
+
+\author{Ren\'{e} Hiemstra$^{\textup{a*}}$, Thomas Hughes$^{\textup{a}}$ \\
+$^a$ \textit{\small Institute for Computational Engineering and Sciences, The University of Texas at Austin,} \\
+$^*$ \small Corresponding author.  \textit{E-mail address: rene@ices.utexas.edu}}
+
+\date{}
+\maketitle
+
+\section*{Abstract} Partial differential equations exhibiting multi-scale behavior are notoriously difficult to approximate numerically. In the functional analysis setting the issue is often characterized by a loss of discrete stability (coercivity) of the bilinear form in question. We develop a continuous Petrov Galerkin method that provides a stable and accurate solution in a norm of choice. This is achieved by training a class of properly chosen functions such that their action resembles that of optimal test functions, which follow the solution of a local adjoint problem. This approach is akin to a multidimensional construction of streamline upwind Petrov Galerkin, taking into account all properties of the local flow field.
+\\
+
+%\noindent \textit{Keywords:} Finite Element Analysis, Efficient Isogeometric analysis, Generalized Gaussian Quadrature.
+
+\newpage
+
+\thispagestyle{plain}
+\headheight = 0pt
+
+\label{sec:intro}
+%\input{sections/section2}
+\input{sections/Introduction}
+
+\bibliographystyle{plain}
+\bibliography{Sections/database}
+
+
+\end{document}

@@ -1,0 +1,22 @@
+\section{Solving the test function problem}
+
+\begin{align}
+	\int_{\Omega_x}  \int_{\Omega_y} N_i(x) N_j(y) \cdot N_k(x) N_l(y) dx dy = 
+	\int_{\Omega_x}  N_i(x) N_k(x) dx \cdot \int_{\Omega_y} N_j(y)  N_l(y) dy = M \otimes M
+\end{align}
+
+
+\begin{align}
+	\int_{\Omega_x}  \int_{\Omega_y} N^\prime_i(x) N_j(y) \cdot N_k^\prime(x) N_l(y) dx dy = 
+	\int_{\Omega_x}  N^\prime_i(x) N^\prime_k(x) dx \cdot \int_{\Omega_y} N_j(y)  N_l(y) dy = M \otimes K
+\end{align}
+
+\begin{align}
+	\int_{\Omega_x}  \int_{\Omega_y} N_i(x) N^\prime_j(y) \cdot N_k(x) N^\prime_l(y) dx dy = 
+	\int_{\Omega_x}  N_i(x) N_k(x) dx \cdot \int_{\Omega_y} N^\prime_j(y)  N^\prime_l(y) dy = K \otimes M
+\end{align}
+
+\begin{align}
+	\kappa \cdot M \otimes K + \kappa \cdot K \otimes M + c \cdot M \otimes M
+\end{align}
+
